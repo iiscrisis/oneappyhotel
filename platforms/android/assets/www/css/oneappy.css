@@ -1,0 +1,99 @@
+/* CSS Document */
+
+li
+{
+	list-style:none;	
+}
+
+
+
+.hidden
+{
+	display:none;	
+}
+
+.text-center
+{
+	text-align:center;	
+}
+
+.clearer
+{
+	clear:both;	
+}
+
+#install_data
+{
+	
+}
+
+#hotels_list
+{
+	  width: 90%;
+	  max-width:350px;
+	  margin:auto;
+}
+
+#scan_qr_btn {
+  width: 90%;
+  max-width: 350px;
+  margin: auto;
+}
+
+.single_front_item h4
+ {
+	cursor:pointer; 
+ }
+
+.single_front_item .front_details, .single_front_item h4
+{
+		
+  border: solid 10px #030405;
+  padding: 20px;
+  text-align: center;
+  margin-bottom:10px;
+  
+}
+
+.menu_btn
+{
+	cursor:pointer;	
+}
+
+#menu_logo
+{
+
+  position: absolute;
+  right: 10px;
+  top: 10px;
+
+}
+
+
+
+.single_menu 
+{
+
+float:left;	
+}
+
+.single_menu  a
+{
+	
+	height:75px;	
+}
+
+.single_menu img
+{
+	position:relative !important;	
+}
+
+
+/*Bookmarks*/
+
+.single_bookmark
+{
+	padding:10px;
+		
+	margin-bottom:3px;
+}

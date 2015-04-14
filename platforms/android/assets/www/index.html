@@ -1,0 +1,360 @@
+<!DOCTYPE html> 
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="lib/jquery.mobile-1.4.5.min.css" />
+<link rel="stylesheet" href="css/oneappy.css" />
+
+<title>Page Title</title>
+</head>
+
+<body>
+
+
+<div data-role="page" id="one_appy_main">
+
+	<div data-role="header" data-position="fixed">
+		<h1>one 'appy hotel</h1>
+	</div>
+	<!-- /header -->
+
+	<div role="main" class="ui-content">
+		 <div id="logo">
+    	
+    	</div>
+    
+        <div id="scan_qr_btn">
+         <div class="single_front_item"> <h4>Scan new Hotel</h4></div>
+        </div>
+        
+        
+        
+      
+        
+          <div id="hotels_list">
+          </div>
+          
+        <!--    <div id="install_data" class="	">
+           <a href="#" data-role="button" class="ui-link ui-btn ui-shadow ui-corner-all">Install sample data </a>  
+        </div>
+        <div id="delete_data" class="">
+           <a href="#" data-role="button" class="ui-link ui-btn ui-shadow ui-corner-all">Delete sample data </a>  
+        </div>-->
+	</div>
+	<!-- /content -->
+
+	<div data-role="footer" data-position="fixed">
+		
+	</div>
+	<!-- /footer -->
+</div>
+<!-- /page intro-->
+
+<div data-role="page" id="one_appy_hotel_main">
+
+	<div data-role="header" data-position="">
+		<div data-role="collapsible" data-mini="true" class="collapsible_menu" id="main_menu_collapse">
+			
+				<h4><img src="images/app/menu.png"/></h4>
+				<ul  data-role="listview">
+					<li>
+					
+							
+							<h2>Tools</h2>
+							<div class="menu_plugins">
+							
+							</div>
+					
+							<div class="clearer"></div>
+							<h2>Categories</h2>
+							<div class="menu_topItems">
+							
+							</div>
+					</li>
+				</ul>
+			
+		</div>	
+   
+        <div class="push_notes_btn"><span>messages</span></div>
+         <div id="menu_logo"><a href="#one_appy_main"><img src="images/app/logo_mini.png"/></a></div>
+	</div>
+	<!-- /header -->
+
+	<div role="main" class="ui-content">
+		
+	</div>
+	<!-- /content -->
+
+	<div data-role="footer" data-position="fixed">
+		<h4>Page Footer</h4>
+	</div>
+	<!-- /footer -->
+</div>
+
+
+	<script id="front_page_list" type="text/x-handlebars-template">
+			{{#each Hotel}}
+				<div class="single_front_item">
+            	
+                <h4 class="root_btn">{{hotel_title}}</h4>
+				
+                <div class="front_details hidden">
+                	
+                    <div class="hotel_logo">
+                    	<img src="{{hotel_logo}}" />
+                    </div>
+                    
+                    <div class="hotel_short_description">
+                    	{{hotel_description}}
+                    </div>
+                    
+                    <div class="hotel_actions">
+                    
+                    	<div class="action_button"><a href="#createHotel?id:{{id}}" data-role="button" class="ui-link ui-btn ui-shadow ui-corner-all">Visit</a></div>
+                        <div class="action_button"><a href="#" data-role="button" data-root_id="{{id}}" class="ui-link ui-btn ui-shadow ui-corner-all">Delete</a></div>
+                        <div class="action_button"><a href="#" data-role="button" class="ui-link ui-btn ui-shadow ui-corner-all close_root">Close</a></div></div>
+                    
+                    </div>
+                	
+                </div>
+            	
+            </div>
+			{{/each}}
+	</script>
+        
+ <script id="hotel_first_page" type="text/x-handlebars-template">
+ 
+ 	 <div id="hotel_main">
+        
+        	<div class="logo_main"><img src="images/{{logo}}"/></div>
+            
+            <div class="main_description" class="general_text">
+            		{{description}}
+            </div>	
+        
+        </div> <!-- End hotel main-->
+ 
+ </script>
+ 
+<script id="hotel_leaf_page" type="text/x-handlebars-template">
+	{{#if Data}}
+		{{#each Data}}
+			<div class="hotel_leaf">
+			
+				<div class="logo_main"><img src="images/{{logo}}"/></div>
+				<h2>{{title}}</h2>
+				<div class="plugins">
+					<div > 
+						 <label for="bookmark_input">Bookmarked</label>
+						 <input class="bookmark_plugin" type="checkbox" value="{{leaf_id}}" name="bookmark_input" {{bookmark}}/>
+					</div>
+				</div>
+				
+				<div class="main_description" class="general_text">
+						{{description}}
+				</div>	
+				
+				<div class="subcategories">
+					<div class="subcategories_container">
+						{{#if subcategories}}
+							{{#each subcategories}}
+								
+								<li class="leafsubcategories">
+									
+										<div class="single_leaf">
+											<a href="#hotelItem?id:{{id}}&title:{{title}}" data-role="button" class="ui-link ui-btn ui-shadow ui-corner-all">{{title}}</a>
+										</div>
+									
+								</li><!-- ENd menu list-->    
+								
+							{{/each}}
+						{{/if}}
+					
+					</div>
+				</div>
+			
+			</div> <!-- End hotel_leaf-->
+			
+		{{/each}}
+ 	{{/if}}	 
+ </script>
+ 
+
+ 
+<script id="menuPlugIns" type="text/x-handlebars-template">
+ 
+ 	  <div class="menu_list_plugins">
+        	<li class="single_menu plugin"><a href="#one_appy_hotel_main" data-role="button" class="ui-link ui-btn ui-shadow ui-corner-all text-center"><img src="images/icons/plugins/home.png" /> <br/>Home</a></li>
+			{{#each plugIns}}
+            	<li class="single_menu plugin">
+					
+					<a href="#plugin?template:{{template}}&title:{{title}}" data-role="button" class="ui-link ui-btn ui-shadow ui-corner-all text-center"><img src="images/{{icon}}" /> <br/>{{title}}</a>
+				</li>
+         	{{/each}}
+         </div><!-- ENd menu list-->     
+         
+      
+	 
+</script>
+
+<script id="menuTopItems" type="text/x-handlebars-template">
+ 
+	
+ 	  <div class="menu_list_topItems">
+	  		{{#each topItems}}
+				<li class="single_menu">
+					<a href="#hotelItem?id:{{id}}&title:{{title}}" data-role="button" class="ui-link ui-btn ui-shadow ui-corner-all">{{title}}</a>
+				</li>
+			{{/each}} 
+         </div><!-- ENd menu list-->    
+	
+</script>
+
+<script id="page_template" type="text/x-handlebars-template">
+ 
+	<div data-role="header" data-position="" data-title={{title}} class="page_leaf_tmpl">
+
+	
+		<div data-role="collapsible" data-mini="true" class="collapsible_menu">
+			
+				<h4><img src="images/app/menu.png"/></h4>
+				<ul  data-role="listview">
+					<li>
+					
+							
+							<h2>Tools</h2>
+							<div class="menu_plugins">
+							
+							</div>
+					
+							<div class="clearer"></div>
+							<h2>Categories</h2>
+							<div class="menu_topItems">
+							
+							</div>
+					</li>
+				</ul>
+			
+		</div>	
+		<!--
+			<div id="menu">
+				<div class="menu_btn"><img src="images/app/menu.png"/></div>
+				<h2>Tools</h2>
+				<div class="menu_plugins">
+				
+				</div>
+				 <div class="clearer"></div>
+				 <h2>Categories</h2>
+				<div class="menu_topItems">
+				
+				</div>
+			</div>-->
+			
+		<div class="push_notes_btn"><span>messages</span></div>
+		<div id="menu_logo"><a href="#one_appy_main"><img src="images/app/logo_mini.png"/></a></div>
+	</div>
+	<!-- /header -->
+
+	<div role="main" class="ui-content">
+		
+	</div>
+	<!-- /content -->
+
+	<div data-role="footer" data-position="fixed">
+		<h4>Page Footer</h4>
+	</div>
+   
+	
+</script>
+
+<!-- PLUGINS TEMPLATES -->
+<script id="weather_tmpl" type="text/x-handlebars-template">
+	<div class="weather_container">
+		<div class="weather_date">{{weather_date}}</div>
+		<div class="weather_region">{{weather_region}}</div>
+		<div class="weather_info">
+			<div class="weather_degrees">{{weather_degrees}}</div>
+			<div class="weather_icon">{{weather_icon}}</div>
+			<div class="weather_description">{{weather_description}}</div>
+    </div>
+    
+</div>
+</script>
+
+<script id="contact_tmpl" type="text/x-handlebars-template">
+<div class="contact_container">
+	<div class="contact_details">
+    	<div class="contact_address">
+        	{{address}}
+        </div>
+        
+        <div class="contact_phones">
+        	{{phone}}
+        </div>
+        
+        <div class="receprion_hours">
+        	{{hours}}
+        </div>
+        
+        <div class="contact_email">
+        	{{email}}
+        </div>
+        
+        <div class="contact_map">
+        
+        </div>
+    	
+    </div>
+</div>
+</script>
+
+<script id="bookmarks_tmpl" type="text/x-handlebars-template">
+	<div class="bookmarks_container">
+		<div class="bookmarks_list">
+			{{#each Bookmark}}
+				<li class="single_bookmark">
+					
+					<a href="#hotelItem?id:{{id}}&title:{{title}}" data-role="button" class="ui-link ui-btn ui-shadow ui-corner-all">{{title}}</a>
+					<div class="bookmark actions">
+						<a  href="#"  data-leaf_id="{{id}}" data-role="button" data-mini="true"  class="delete_bookmark ui-link ui-btn ui-shadow ui-corner-all">delete</a>
+					</div>
+				</li>
+			{{/each}}
+		</div>
+	
+	</div>
+</script>
+
+<script type="text/x-handlebars-template" id="push_notifications">
+	<div class="notifications_container">
+		{{#each note}}
+			<li class="push_notofocation_entry" data-id={{root_id}}>{{note_date}} - {{title}}</li>
+		{{/each}}
+	</div>
+
+</script>
+
+
+<!-- First Page always on the system -->
+<script type="text/javascript" src="cordova.js"></script>
+<script type="text/javascript" src="lib/jquery-1.8.2.min.js"></script>
+<script type="text/javascript" src="lib/jquery.mobile-1.4.5.min.js"></script>
+<script type="text/javascript" src="lib/pouchdb-3.3.1.min.js"></script>
+<script type="text/javascript" src="lib/handlebars-v3.0.0.js"></script>
+<script type="text/javascript" src="js/oneAppyMemory.js"></script>
+<script type="text/javascript" src="js/PlugIn.js"></script>
+<script type="text/javascript" src="js/HotelMenu.js"></script>
+<script type="text/javascript" src="js/HotelLeaf.js"></script>
+<script type="text/javascript" src="js/hotel.js"></script>
+<script type="text/javascript" src="js/homeview.js"></script>
+<script type="text/javascript" src="js/oneappy.js"></script>
+
+
+
+
+
+
+
+</body>
+</html>

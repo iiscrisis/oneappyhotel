@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<widget xmlns       = "http://www.w3.org/ns/widgets"
+        xmlns:gap   = "http://phonegap.com/ns/1.0"
+        id          = "gr.weac.oneappyhotel"
+        versionCode = "1"
+        version     = "1.1.0">
+ 
+    <name>One 'appy Hotel</name>
+ 
+    <description>
+        Hotel preview app
+    </description>
+ 
+    <author href="http://weac.gr" email="jomous@gmail.com">
+       WE/A/C design and development
+    </author>
+ 
+    <feature name="http://api.phonegap.com/1.0/camera"/>
+    <feature name="http://api.phonegap.com/1.0/contacts"/>
+    <feature name="http://api.phonegap.com/1.0/file"/>
+    <feature name="http://api.phonegap.com/1.0/geolocation"/>
+    <feature name="http://api.phonegap.com/1.0/media"/>
+    <feature name="http://api.phonegap.com/1.0/network"/>
+    <feature name="http://api.phonegap.com/1.0/notification"/>
+	
+	<gap:plugin name="com.phonegap.plugins.barcodescanner" version="1.1.0" />
+	
+    <!-- you can use any density that exists in the Android project -->
+   <icon src="images/splash/generic.png" />
+   
+
+
+
+
+<preference name="SplashScreenDelay" value="10000" />
+
+
+ 
+</widget>

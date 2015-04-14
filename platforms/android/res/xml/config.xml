@@ -1,0 +1,23 @@
+<?xml version='1.0' encoding='utf-8'?>
+<widget id="gr.weac.oneappyhotel" version="1.1.0" versionCode="1" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0">
+    <preference name="loglevel" value="DEBUG" />
+    <feature name="BarcodeScanner">
+        <param name="android-package" value="com.phonegap.plugins.barcodescanner.BarcodeScanner" />
+    </feature>
+    <name>One 'appy Hotel</name>
+    <description>
+        Hotel preview app
+    </description>
+    <author email="jomous@gmail.com" href="http://weac.gr">
+       WE/A/C design and development
+    </author>
+    <gap:plugin name="com.phonegap.plugins.barcodescanner" version="1.1.0" />
+    <icon src="images/splash/generic.png" />
+    <preference name="SplashScreenDelay" value="10000" />
+    <feature name="Accelerometer">
+        <param name="android-package" value="org.apache.cordova.devicemotion.AccelListener" />
+    </feature>
+    <feature name="Compass">
+        <param name="android-package" value="org.apache.cordova.deviceorientation.CompassListener" />
+    </feature>
+</widget>
